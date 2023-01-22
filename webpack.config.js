@@ -14,7 +14,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './app/src/app.html', // Arquivo de referência para que o plugin não crie um HTML novo do zero no build
-      filename: 'app.html' // Nome do arquivo HTML a ser gerado no build
+      filename: 'app.html', // Nome do arquivo HTML a ser gerado no build
+      hash: true // Opção para adicionar hash no arquivo do bundle a fim de invalidar cache quando houver alteração
     })
   ]
 };
