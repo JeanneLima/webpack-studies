@@ -1,4 +1,5 @@
  const path = require('path'); // Recurso do Node.js para retornar o caminho absoluto até o arquivo atual que funciona em qualquer sistema operacional
+ const HtmlWebpackPlugin = require('html-webpack-plugin')
  
  // O arquivo de configuração do Webpack nada mais é do que um módulo do Node.js
  // É a plataforma Node.js que executa o Webpack através do sistema de módulos CommonJS
@@ -8,5 +9,11 @@ module.exports = {
   output: { // informações dos arquivos de saída esperados unindo todos os scripts necessários para melhorar a métrica de latência (ou seja, menos requisições para carregar arquivos essenciais para a aplicação)
     filename: 'bundle.js', // Nome do arquivo
     path: path.resolve(__dirname, 'app/dist') // Local de gravação que precisa ser um caminho absoluto, ou seja, desde a raiz do sistema operacional até a pasta desejada
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './app/src/app.html', // Arquivo de referência para que o plugin não crie um HTML novo do zero no build
+      filename: 'app.html' // Nome do arquivo HTML a ser gerado no build
+    })
+  ]
 };
