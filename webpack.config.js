@@ -25,9 +25,12 @@ module.exports = {
       }
     ]
   },
-  optimization: { // recebe tudo relacionado à otimização
+  optimization: { // recebe tudo relacionado à otimização, consequentemente deixando de aplicar as otimizações padrões do webpack (ex: minificação de bundle JS)
     minimize: true,
-    minimizer: [new CssMinimizerWebpackPlugin()]
+    minimizer: [
+      new CssMinimizerWebpackPlugin(),
+      '...' // mantém as otimizações padrões do webpack
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
