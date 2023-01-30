@@ -1,5 +1,6 @@
  const path = require('path'); // Recurso do Node.js para retornar o caminho absoluto até o arquivo atual que funciona em qualquer sistema operacional
  const HtmlWebpackPlugin = require('html-webpack-plugin')
+ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  
  // O arquivo de configuração do Webpack nada mais é do que um módulo do Node.js
  // É a plataforma Node.js que executa o Webpack através do sistema de módulos CommonJS
@@ -17,7 +18,7 @@ module.exports = {
       {
         test: /\.css$/, // Tipo de arquivo a aplicar a regra (no caso, via expressão regular, todo arquivo encontrado que termine com extensão css, tendo a \ para fazer o escape do ponto)
         use: [ // Lista de loaders baixados a serem usados para interpretar os arquivos apontados acima e inser-los no bundle do webpack
-        'style-loader', // Dinamicamente, em runtime, extrai o CSS gerado no arquivo de script do bundle e cria uma tag style para o mesmo no HTML  
+        MiniCssExtractPlugin.loader, // Dinamicamente, cria arquivo de bundle css
         'css-loader' // Permite importar css como módulo em arquivo Javascript, ou seja, faz com que o webpack aceite importar arquivos CSS através da instrução import e inclusive adiciona os CSS importados no bundle.js criado
         ] 
       }
@@ -29,6 +30,9 @@ module.exports = {
       filename: 'app.html', // Nome do arquivo HTML a ser gerado no build
       hash: true // Opção para adicionar hash no arquivo do bundle a fim de invalidar cache quando houver alteração
     }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    })
   ],
 };
 
