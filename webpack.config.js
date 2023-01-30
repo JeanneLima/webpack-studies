@@ -2,6 +2,7 @@
  const HtmlWebpackPlugin = require('html-webpack-plugin')
  const MiniCssExtractPlugin = require('mini-css-extract-plugin');
  const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
+ const webpack = require('webpack');
  
  // O arquivo de configuração do Webpack nada mais é do que um módulo do Node.js
  // É a plataforma Node.js que executa o Webpack através do sistema de módulos CommonJS
@@ -40,7 +41,8 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css'
-    })
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin()
   ],
 };
 
