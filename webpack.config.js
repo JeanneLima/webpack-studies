@@ -46,3 +46,8 @@ module.exports = {
   ],
 };
 
+/**
+ * OBSERVAÇÕES IMPORTATES:
+ * Em conjunto com o webpack, foi implementado lazy loading para carregar assíncronamente determinado módulo somente quando uma ação dependente for disparada pelo usuário
+ * Em conjunto com o webpack, foi implementado code splitting para separar trechos do código em bundles separados, ou seja, criar chunk secundário para permitir lazy loading; importante destacar que o webpack consegue fazer o code splitting automaticamente assim que reconhece carregamento assícnrono de qualquer módulo na aplicação (em desenvolvimento, com nome claro; em prod, nome menos explicito sobre o conteúdo do arquivo)
+ */
